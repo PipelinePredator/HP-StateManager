@@ -75,7 +75,12 @@ public class PlayMenu extends MenuState {
 			else if(createOnlineMultiPlayer.isButtonPressed())
 			{
 				gameFrame.stateManager.stopCurrentState();
-				gameFrame.stateManager.setCurrentState("OnlineMultiPlayer");
+				gameFrame.stateManager.setCurrentState("CreateOnlineMultiPlayer");
+			}
+			else if(joinOnlineMultiPlayer.isButtonPressed())
+			{
+				gameFrame.stateManager.stopCurrentState();
+				gameFrame.stateManager.setCurrentState("JoinOnlineMultiPlayer");
 			}
 			else if(backButton.isButtonPressed())
 			{

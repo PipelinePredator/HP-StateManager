@@ -22,8 +22,8 @@ public class StateManager {
 	private State latestState;
 	
 	private State localMultiPlayer;
-	private State hostingMultiplayer;
-	private State joiningMultiPlayer;
+	private State JoinOnlineMultiPlayer;
+	private State CreateOnlineMultiPlayer;
 	private State mainMenu;
 	private State playMenu;
 	
@@ -40,9 +40,14 @@ public class StateManager {
 		localMultiPlayer = new LocalMultiPlayerState(gameFrame);
 		mainMenu = new MainMenu(gameFrame);
 		playMenu = new PlayMenu(gameFrame);
+		JoinOnlineMultiPlayer = new States.JoinOnlineMultiPlayer(gameFrame);
+		CreateOnlineMultiPlayer = new States.CreateOnlineMultiPlayer(gameFrame);
+		
 		allStates.add(localMultiPlayer);
 		allStates.add(mainMenu);
 		allStates.add(playMenu);
+		allStates.add(CreateOnlineMultiPlayer);
+		allStates.add(JoinOnlineMultiPlayer);
 		
 	}
 	
@@ -53,7 +58,6 @@ public class StateManager {
 			if(state.getStateName() == stateName)
 			{
 				currentState = state;
-				return;
 			}
 		}
 		startCurrentState();

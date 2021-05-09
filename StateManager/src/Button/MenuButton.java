@@ -19,9 +19,6 @@ public class MenuButton {
 	private MouseManager mouseManager;
 	private boolean highlited = false;
 	
-	//vlt noch so etwas wie grösse und rechteck bestimmen
-	
-	
 	
 	public MenuButton(String buttonName, int width, int height, int xPosition, int yPosition, Font buttonFont, MouseManager mouseManager) {
 		this.buttonFont = buttonFont;

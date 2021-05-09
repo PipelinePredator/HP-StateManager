@@ -52,7 +52,7 @@ public class GameFrame extends JFrame{
 		canvas.addMouseMotionListener(mouseManager);
 		stateManager = new StateManager(this);
 		stateManager.setCurrentState("PlayMenu");
-		stateManager.startCurrentState();
+//		stateManager.startCurrentState();
 		
 	}
 

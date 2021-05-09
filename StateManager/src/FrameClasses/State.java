@@ -44,7 +44,7 @@ public abstract class State  implements Runnable {
 			return;
 		}
 		try {
-			thread.join(1);//makes the thread die but not imediately
+			thread.join(100);//makes the thread die but not imediately
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -44,22 +44,10 @@ public class LocalMultiPlayerState extends State {
 	
 	public void finalize()
 	{
-//		gameFrame.getContentPane().remove(gameGrid);
-//		gameGrid.doPause();
-//		gameGrid = null;
-	}
-	@Override
-	public void render()
-	{
-	}
-	@Override
-	public void update()
-	{
-	}
-	@Override 
-	public void run()
-	{
-		
+		gameFrame.getContentPane().removeAll();
+		gameGrid1 = null;
+		gameGrid2 = null;
+		gameFrame.getContentPane().add(gameFrame.getCanvas());//see if not needed
 	}
 	
 	@Override
@@ -68,6 +56,11 @@ public class LocalMultiPlayerState extends State {
 		System.out.println("GameState started");
 		initialize();
 
+		
+	}
+	@Override 
+	public void stop()
+	{
 		
 	}
 	

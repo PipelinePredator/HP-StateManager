@@ -2,9 +2,22 @@ package FrameClasses;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MouseManager implements MouseListener, MouseMotionListener {
 
+	//the Timer aswel as the Timer task is used so the LeftKlick is disabled after 5milliseconds to ensure no doubleklicks
+	private Timer timer = new Timer();
+	public class LeftPressedToFalse extends TimerTask{
+
+		@Override
+		public void run() {
+			leftPressed = false;
+			
+		}
+		
+	}
 	private boolean leftPressed, rightPressed;
 	private int mouseX, mouseY;
 	
@@ -34,18 +47,16 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if(e.getButton() == MouseEvent.BUTTON1)
-			leftPressed = true;
-		else if(e.getButton() == MouseEvent.BUTTON3)
-			rightPressed = true;
+		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		if(e.getButton() == MouseEvent.BUTTON1)
-			leftPressed = false;
-		else if(e.getButton() == MouseEvent.BUTTON3)
-			rightPressed = false;
+//		if(e.getButton() == MouseEvent.BUTTON1)
+//			leftPressed = false;
+//		else if(e.getButton() == MouseEvent.BUTTON3)
+//			rightPressed = false;
 	}
 
 	@Override
@@ -62,8 +73,9 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		if(e.getButton() == MouseEvent.BUTTON1)
+			leftPressed = true;
+		timer.schedule(new LeftPressedToFalse(), 5);
 	}
 
 	@Override

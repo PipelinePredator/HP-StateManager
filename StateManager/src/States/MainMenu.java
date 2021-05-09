@@ -41,11 +41,11 @@ public class MainMenu extends MenuState {
 		this.gameFrame = gameFrame;
 		this.bufferedStrategy = super.bufferedStrategy;
 
-		playButton = new MainMenuButton("Play", 60, 40, 370, 300);
+		playButton = new MainMenuButton("Play", 60, 40, 370, 300, gameFrame.getMouseManager());
 		super.allButtons.add(playButton);
-		shopButton = new MainMenuButton("Shop", 70, 40, 365, 370);
+		shopButton = new MainMenuButton("Shop", 70, 40, 365, 370, gameFrame.getMouseManager());
 		super.allButtons.add(shopButton);
-		exitButton = new MainMenuButton("Exit", 60, 40 ,370, 440);
+		exitButton = new MainMenuButton("Exit", 60, 40 ,370, 440, gameFrame.getMouseManager());
 		super.allButtons.add(exitButton);
 	}
 
@@ -83,20 +83,24 @@ public class MainMenu extends MenuState {
 	@Override
 	public void update()
 	{
-		super.update();
+//		if(running)
+//		{
+			super.update();
+	
+	
+			if(playButton.isButtonPressed())
+			{	
+				gameFrame.stateManager.stopCurrentState();
+				gameFrame.stateManager.setCurrentState("PlayMenu");
+			}
+			if(exitButton.isButtonPressed())
+			{
+				System.exit(0);
+			}
+//		}
 		
 
-		if(playButton.isHighlited() && super.leftIsPressed)
-		{
-			gameFrame.stateManager.stopCurrentState();
-			gameFrame.stateManager.setCurrentState("PlayMenu");
-			gameFrame.stateManager.startCurrentState();
-		}
-		if(exitButton.isHighlited() &&super.leftIsPressed)
-		{
-			System.exit(0);
-		}
-
+		
 		
 	}
 	@Override
@@ -105,6 +109,6 @@ public class MainMenu extends MenuState {
 		super.start();
 	}
 	
-	
+
 	
 }

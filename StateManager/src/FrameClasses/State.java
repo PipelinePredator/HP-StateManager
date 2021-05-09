@@ -2,6 +2,7 @@ package FrameClasses;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.util.concurrent.TimeUnit;
 
 public abstract class State  implements Runnable {
 
@@ -30,10 +31,11 @@ public abstract class State  implements Runnable {
 			System.out.println("thread already running");
 			return;
 		}
-		System.out.println("started " + stateName);
+		
 		running =true;
 		thread = new Thread(this);
 		thread.start();
+		System.out.println("started " + stateName);
 	}
 	public synchronized void stop()
 	{
@@ -41,9 +43,14 @@ public abstract class State  implements Runnable {
 		{
 			return;
 		}
+		try {
+			thread.join(1);//makes the thread die but not imediately
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		running = false;
-		
-		System.out.println("not runnig animore");
+		System.out.println("stopped" +stateName);
 	}
 
 	public boolean isRunning() {
@@ -77,7 +84,7 @@ public abstract class State  implements Runnable {
 			update();
 			render();
 		}
-		System.out.println("Stopped");	
+		System.out.println("runningof " + stateName+"  done");	
 	}
 
 	

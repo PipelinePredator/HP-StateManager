@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
-import States.LocalMultiPlayer;
+import States.LocalMultiPlayerState;
 import States.MainMenu;
 import States.PlayMenu;
 import client.TowerWarsGrid;
@@ -37,7 +37,7 @@ public class StateManager {
 	
 	private void initialiseAllStates()
 	{
-		localMultiPlayer = new LocalMultiPlayer(gameFrame);
+		localMultiPlayer = new LocalMultiPlayerState(gameFrame);
 		mainMenu = new MainMenu(gameFrame);
 		playMenu = new PlayMenu(gameFrame);
 		allStates.add(localMultiPlayer);
@@ -48,20 +48,15 @@ public class StateManager {
 	
 	public void setCurrentState(String stateName) 
 	{ 
-		System.out.println("iafhadfsas");
-//		if(latestState != null && latestState.getStateName() == "GameState")
-//		{
-//			System.out.println("hallo");
-//			((GameState)latestState).finalize();
-//		}
-//		
 		for(State state : allStates)
 		{
 			if(state.getStateName() == stateName)
 			{
 				currentState = state;
+				return;
 			}
 		}
+		startCurrentState();
 	}
 	
 	public void startCurrentState() 

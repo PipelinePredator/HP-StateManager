@@ -2,20 +2,22 @@ package States;
 
 import java.awt.BorderLayout;
 
+import Button.MenuButton;
 import FrameClasses.GameFrame;
 import FrameClasses.State;
 import client.TowerWarsGrid;
+import client.LocalMultiPlayer;
 
 
-public class LocalMultiPlayer extends State {
-	LocalMultiPlayer localMultiPlayer;
+public class LocalMultiPlayerState extends State {
+	LocalMultiPlayerState localMultiPlayer;
 	GameFrame gameFrame;
-	TowerWarsGrid gameGrid1;
-	TowerWarsGrid gameGrid2;
+	LocalMultiPlayer gameGrid1;
+	LocalMultiPlayer gameGrid2;
 
 	
-	public LocalMultiPlayer(GameFrame gameFrame) {
-		super("GameState", gameFrame);
+	public LocalMultiPlayerState(GameFrame gameFrame) {
+		super("LocalMulitPlayer", gameFrame);
 		this.gameFrame = gameFrame;
 //		gameFrame.getContentPane().add(gameGrid);
 //		gameGrid.startGame();
@@ -28,8 +30,13 @@ public class LocalMultiPlayer extends State {
 	public void initialize()
 	{
 		gameFrame.getContentPane().removeAll();
-		gameGrid1 = new TowerWarsGrid(1,2,true);
-		gameGrid2 = new TowerWarsGrid(1,2,false);
+		
+		gameGrid1 = new LocalMultiPlayer(1);
+		gameGrid2 = new LocalMultiPlayer(2);
+		gameFrame.setSize(LocalMultiPlayer.WIDTH*2, LocalMultiPlayer.HEIGHT);
+		gameFrame.getContentPane().add(gameGrid1);
+		gameFrame.getContentPane().add(gameGrid2);
+		gameGrid1.show();
 		gameFrame.repaint();
 		System.out.println("ContenPane added");
 
@@ -63,6 +70,7 @@ public class LocalMultiPlayer extends State {
 
 		
 	}
+	
 	
 	
 }

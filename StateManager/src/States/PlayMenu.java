@@ -6,6 +6,7 @@ import java.awt.Font;
 import Button.MenuButton;
 import Button.PlayButton;
 import FrameClasses.GameFrame;
+import FrameClasses.MouseManager;
 import FrameClasses.State;
 
 public class PlayMenu extends MenuState {
@@ -22,19 +23,21 @@ public class PlayMenu extends MenuState {
 	public PlayMenu( GameFrame gameFrame) {
 		super("PlayMenu", gameFrame);
 		this.gameFrame = gameFrame;
-		localMulitPlayer = new PlayButton("Local-Mulitplayer", 250, 30, 270, 300);
+		localMulitPlayer = new PlayButton("Local-Mulitplayer", 250, 30, 270, 300, gameFrame.getMouseManager());
 		super.allButtons.add(localMulitPlayer);
-		createOnlineMultiPlayer = new PlayButton("create Online-Mulitplayer", 300, 30, 242, 390);
+		createOnlineMultiPlayer = new PlayButton("create Online-Mulitplayer", 300, 30, 242, 390, gameFrame.getMouseManager());
 		super.allButtons.add(createOnlineMultiPlayer);
-		joinOnlineMultiPlayer = new PlayButton("join Online-Mulitplayer", 300, 30, 242, 480);
+		joinOnlineMultiPlayer = new PlayButton("join Online-Mulitplayer", 300, 30, 242, 480, gameFrame.getMouseManager());
 		super.allButtons.add(joinOnlineMultiPlayer);
-		backButton = new PlayButton("Back", 60, 40, 1, 1);
+		backButton = new PlayButton("Back", 60, 40, 1, 1, gameFrame.getMouseManager());
 		super.allButtons.add(backButton);
 	}
 	
 	@Override
 	public void render()
 	{
+//		if(running)
+//		{
 			super.render();
 			g.setFont(headFont);
 			g.setColor(Color.white);
@@ -54,29 +57,34 @@ public class PlayMenu extends MenuState {
 			}
 			g.dispose();
 			bufferedStrategy.show();
+//		}
+		
 		
 	}
 	@Override
 	public void update() {
 		
-		super.update();
-		if(localMulitPlayer.isHighlited() && super.leftIsPressed)
-		{
-			gameFrame.stateManager.stopCurrentState();
-			gameFrame.stateManager.setCurrentState("GameState");
-			gameFrame.stateManager.startCurrentState();
-		}
-		else if(createOnlineMultiPlayer.isHighlited() &&super.leftIsPressed)
-		{
-		}
-		else if(backButton.isHighlited() && super.leftIsPressed)
-		{
-			gameFrame.stateManager.stopCurrentState();
-			System.out.println("stopped");
-			gameFrame.stateManager.setCurrentState("MainMenu");
-			System.out.println("set");
-			gameFrame.stateManager.startCurrentState();
-			System.out.println("started");
-		}
+//		if(running)
+//		{
+			super.update();
+			if(localMulitPlayer.isButtonPressed())
+			{
+				gameFrame.stateManager.stopCurrentState();
+				gameFrame.stateManager.setCurrentState("LocalMultiPlayer");
+			}
+			else if(createOnlineMultiPlayer.isButtonPressed())
+			{
+				gameFrame.stateManager.stopCurrentState();
+				gameFrame.stateManager.setCurrentState("OnlineMultiPlayer");
+			}
+			else if(backButton.isButtonPressed())
+			{
+				gameFrame.stateManager.stopCurrentState();
+				gameFrame.stateManager.setCurrentState("MainMenu");
+				
+			}
+		
+//		}
 	}
+
 }

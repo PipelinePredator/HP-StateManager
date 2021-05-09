@@ -6,6 +6,9 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import FrameClasses.GameFrame;
+import FrameClasses.MouseManager;
+
 public class MainMenuButton extends MenuButton{
  
 	
@@ -16,8 +19,8 @@ public class MainMenuButton extends MenuButton{
 
 
 
-	public MainMenuButton(String buttonName, int width, int height, int xPosition, int yPosition) {
-		super(buttonName, width, height, xPosition, yPosition, buttonFont);
+	public MainMenuButton(String buttonName, int width, int height, int xPosition, int yPosition, MouseManager mouseManager) {
+		super(buttonName, width, height, xPosition, yPosition, buttonFont,  mouseManager);
 		buttons = super.buttons;
 	}
 	

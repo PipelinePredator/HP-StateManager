@@ -4,6 +4,10 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.util.concurrent.TimeUnit;
+
+import FrameClasses.GameFrame;
+import FrameClasses.MouseManager;
 
 public class MenuButton {
 	private String ButtonName;
@@ -12,20 +16,21 @@ public class MenuButton {
 	private int xPosition, yPosition;
 	private int width;
 	private int height;
-	
-	private boolean highlited;
+	private MouseManager mouseManager;
+	private boolean highlited = false;
 	
 	//vlt noch so etwas wie grösse und rechteck bestimmen
 	
 	
 	
-	public MenuButton(String buttonName, int width, int height, int xPosition, int yPosition, Font buttonFont) {
+	public MenuButton(String buttonName, int width, int height, int xPosition, int yPosition, Font buttonFont, MouseManager mouseManager) {
 		this.buttonFont = buttonFont;
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
 		this.ButtonName = buttonName;
 		this.width = width;
 		this.height = height;
+		this.mouseManager = mouseManager;
 		makeMenuButton(buttonName);
 	}
 
@@ -56,6 +61,15 @@ public class MenuButton {
 	    g.dispose();
 	    return menuButton;
 	
+	}
+	
+	public boolean isButtonPressed() {
+		if(xPosition<=mouseManager.getMouseX()&& mouseManager.getMouseX()<=(xPosition+width) && yPosition<=mouseManager.getMouseY()&& mouseManager.getMouseY() <=(yPosition+height)&&mouseManager.isLeftPressed())
+		{
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 	public int getYPosition() {

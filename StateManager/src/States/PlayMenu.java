@@ -12,19 +12,22 @@ public class PlayMenu extends MenuState {
 
 	private GameFrame gameFrame;
 	private Font headFont= new Font("TimesRoman", Font.PLAIN, 40);
-	private final int headXPos = 200, headYPos = 200;
+	private final int headXPos = 210, headYPos = 180;
 	
 	private PlayButton localMulitPlayer;
-	private PlayButton onlineMultiPlayer;
+	private PlayButton createOnlineMultiPlayer;
+	private PlayButton joinOnlineMultiPlayer;
 	private PlayButton backButton;
 			
 	public PlayMenu( GameFrame gameFrame) {
 		super("PlayMenu", gameFrame);
 		this.gameFrame = gameFrame;
-		localMulitPlayer = new PlayButton("Local-Mulitplayer", 250, 30, 225, 400);
+		localMulitPlayer = new PlayButton("Local-Mulitplayer", 250, 30, 270, 300);
 		super.allButtons.add(localMulitPlayer);
-		onlineMultiPlayer = new PlayButton("Online-Mulitplayer", 250, 30, 225, 470);
-		super.allButtons.add(onlineMultiPlayer);
+		createOnlineMultiPlayer = new PlayButton("create Online-Mulitplayer", 300, 30, 242, 390);
+		super.allButtons.add(createOnlineMultiPlayer);
+		joinOnlineMultiPlayer = new PlayButton("join Online-Mulitplayer", 300, 30, 242, 480);
+		super.allButtons.add(joinOnlineMultiPlayer);
 		backButton = new PlayButton("Back", 60, 40, 1, 1);
 		super.allButtons.add(backButton);
 	}
@@ -32,24 +35,25 @@ public class PlayMenu extends MenuState {
 	@Override
 	public void render()
 	{
-		super.render();
-		g.setFont(headFont);
-		g.setColor(Color.white);
-		g.drawString("Choose a playing option",headXPos, headYPos);
-		
-		for(MenuButton button: super.allButtons)
-		{
-			if(button.isHighlited())
+			super.render();
+			g.setFont(headFont);
+			g.setColor(Color.white);
+			g.drawString("Choose a playing option",headXPos, headYPos);
+			
+			for(MenuButton button: super.allButtons)
 			{
-				g.drawImage(button.buttons[1], button.getXPosition(), button.getYPosition(),null);
-			}else 
-			{
-				g.drawImage(button.buttons[0], button.getXPosition(), button.getYPosition(),null);
+				if(button.isHighlited())
+				{
+					g.drawImage(button.buttons[1], button.getXPosition(), button.getYPosition(),null);
+				}else 
+				{
+					g.drawImage(button.buttons[0], button.getXPosition(), button.getYPosition(),null);
+				}
+			
+			
 			}
-		}
-		
-		g.dispose();
-		bufferedStrategy.show();
+			g.dispose();
+			bufferedStrategy.show();
 		
 	}
 	@Override
@@ -62,7 +66,7 @@ public class PlayMenu extends MenuState {
 			gameFrame.stateManager.setCurrentState("GameState");
 			gameFrame.stateManager.startCurrentState();
 		}
-		else if(onlineMultiPlayer.isHighlited() &&super.leftIsPressed)
+		else if(createOnlineMultiPlayer.isHighlited() &&super.leftIsPressed)
 		{
 		}
 		else if(backButton.isHighlited() && super.leftIsPressed)

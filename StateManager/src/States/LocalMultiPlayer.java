@@ -7,12 +7,12 @@ import FrameClasses.State;
 import client.TowerWarsGrid;
 
 
-public class GameState extends State {
+public class LocalMultiPlayer extends State {
 	TowerWarsGrid gameGrid;
 	GameFrame gameFrame;
 
 	
-	public GameState( GameFrame gameFrame, TowerWarsGrid gameGrid) {
+	public LocalMultiPlayer(GameFrame gameFrame) {
 		super("GameState", gameFrame);
 		this.gameGrid = gameGrid;
 		this.gameFrame = gameFrame;
@@ -48,11 +48,11 @@ public class GameState extends State {
 	public void update()
 	{
 	}
-//	@Override 
-//	public void run()
-//	{
-//		
-//	}
+	@Override 
+	public void run()
+	{
+		
+	}
 	
 	@Override
 	public void start()

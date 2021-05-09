@@ -5,7 +5,7 @@ import java.awt.image.BufferStrategy;
 
 public abstract class State  implements Runnable {
 
-	private boolean running = false;
+	protected boolean running = false;
 	public BufferStrategy bufferedStrategy;
 	private GameFrame gameFrame;
 	public Graphics g;
@@ -42,6 +42,7 @@ public abstract class State  implements Runnable {
 			return;
 		}
 		running = false;
+		
 		System.out.println("not runnig animore");
 	}
 

@@ -61,13 +61,17 @@ public class MenuState  extends State{
 	@Override
 	public void render()
 	{
-		super.render();
+		if(running)
+		{
+			super.render();
 		
-		this.g = super.g;
+			this.g = super.g;
+			
+			//Draws the Background for all MenuStates 
+			g.drawImage(GameFrame.menuBackground.allImages[GameFrame.menuBackground.currentImage], 0, 0, null);
+			//draws the title for allStates
+		}
 		
-		//Draws the Background for all MenuStates 
-		g.drawImage(GameFrame.menuBackground.allImages[GameFrame.menuBackground.currentImage], 0, 0, null);
-		//draws the title for allStates
 		
 		
 		

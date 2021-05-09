@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
-import States.GameState;
+import States.LocalMultiPlayer;
 import States.MainMenu;
 import States.PlayMenu;
 import client.TowerWarsGrid;
@@ -21,7 +21,9 @@ public class StateManager {
 	private GameFrame gameFrame;
 	private State latestState;
 	
-	private State gameState;
+	private State localMultiPlayer;
+	private State hostingMultiplayer;
+	private State joiningMultiPlayer;
 	private State mainMenu;
 	private State playMenu;
 	
@@ -35,10 +37,10 @@ public class StateManager {
 	
 	private void initialiseAllStates()
 	{
-		gameState = new GameState(gameFrame,new TowerWarsGrid(1,2,false));
+		localMultiPlayer = new LocalMultiPlayer(gameFrame);
 		mainMenu = new MainMenu(gameFrame);
 		playMenu = new PlayMenu(gameFrame);
-		allStates.add(gameState);
+		allStates.add(localMultiPlayer);
 		allStates.add(mainMenu);
 		allStates.add(playMenu);
 		
@@ -64,7 +66,7 @@ public class StateManager {
 	
 	public void startCurrentState() 
 	{
-		gameFrame.add( currentState.getGameFrame().getCanvas());
+//		gameFrame.add( currentState.getGameFrame().getCanvas());
 		currentState.start();
 		
 	}

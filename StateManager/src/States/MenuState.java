@@ -30,7 +30,7 @@ public class MenuState  extends State{
 		super(name, gameFrame);
 
 		this.gameFrame = gameFrame;
-		this.bufferedStrategy = State.bufferedStrategy;
+		this.bufferedStrategy = super.bufferedStrategy;
 	}
 	
 	

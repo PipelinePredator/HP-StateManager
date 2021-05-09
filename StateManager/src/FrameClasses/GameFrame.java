@@ -14,12 +14,12 @@ public class GameFrame extends JFrame{
 	
 	public static final int WIDTH = 800, HEIGHT = 700;
 	private Canvas canvas;
+	private Container container1;
 	private Dimension size = new Dimension(WIDTH, HEIGHT);
 	//managers
 	public StateManager stateManager;
 	
 	public static MenuBackground menuBackground;
-	public Container container1;
 	private MouseManager mouseManager;
 	
 	public GameFrame()
@@ -29,15 +29,16 @@ public class GameFrame extends JFrame{
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
+		
+		container1 = getContentPane();
 		canvas = new Canvas();
 		
 		canvas.setPreferredSize(size);
 		setMinimumSize(size);
 		setMaximumSize(size);
+		container1.add(canvas);
 		add(canvas);
 		canvas.createBufferStrategy(3);
-		container1 = getContentPane();
-		container1.add(canvas);
 		pack();
 
 		
@@ -52,7 +53,7 @@ public class GameFrame extends JFrame{
 		canvas.addMouseListener(mouseManager);
 		canvas.addMouseMotionListener(mouseManager);
 		stateManager = new StateManager(this);
-		stateManager.setCurrentState("MainMenu");
+		stateManager.setCurrentState("PlayMenu");
 		stateManager.startCurrentState();
 		
 	}
@@ -76,6 +77,4 @@ public class GameFrame extends JFrame{
 	public static void main(String[] args) {
 		new GameFrame();
 	}
-
-	
 }

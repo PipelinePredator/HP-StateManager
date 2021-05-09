@@ -64,14 +64,14 @@ public class StateManager {
 	
 	public void startCurrentState() 
 	{
-//		gameFrame.add( allStates.get(currentState).getGameFrame().getCanvas());
+		gameFrame.add( currentState.getGameFrame().getCanvas());
 		currentState.start();
 		
 	}
 	
 	public void stopCurrentState() 
 	{
-//		gameFrame.remove(allStates.get(currentState));
+//		gameFrame.getContentPane.remove(currentState);
 		currentState.stop();
 	}
 	

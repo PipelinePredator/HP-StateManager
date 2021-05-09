@@ -69,7 +69,7 @@ public class PlayMenu extends MenuState {
 		{
 			gameFrame.stateManager.stopCurrentState();
 			System.out.println("stopped");
-			gameFrame.stateManager.setCurrentState("MenuState");
+			gameFrame.stateManager.setCurrentState("MainMenu");
 			System.out.println("set");
 			gameFrame.stateManager.startCurrentState();
 			System.out.println("started");

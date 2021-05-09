@@ -6,7 +6,7 @@ import java.awt.image.BufferStrategy;
 public abstract class State  implements Runnable {
 
 	private boolean running = false;
-	public static BufferStrategy bufferedStrategy;
+	public BufferStrategy bufferedStrategy;
 	private GameFrame gameFrame;
 	public Graphics g;
 	private  String stateName;
@@ -19,18 +19,18 @@ public abstract class State  implements Runnable {
 	{
 		this.stateName = name;
 		this.gameFrame = gameFrame;
-		State.bufferedStrategy = gameFrame.getCanvas().getBufferStrategy();
+		bufferedStrategy = gameFrame.getCanvas().getBufferStrategy();
 
 	}
 	
-	public void start()
+	public synchronized void start()
 	{
 		
 		if(running) {
 			System.out.println("thread already running");
 			return;
 		}
-		System.out.println("startted" + stateName);
+		System.out.println("started " + stateName);
 		running =true;
 		thread = new Thread(this);
 		thread.start();
@@ -42,6 +42,7 @@ public abstract class State  implements Runnable {
 			return;
 		}
 		running = false;
+		System.out.println("not runnig animore");
 	}
 
 	public boolean isRunning() {
@@ -53,7 +54,7 @@ public abstract class State  implements Runnable {
 	}
 	public void render()
 	{
-		g = this.bufferedStrategy.getDrawGraphics();
+		g = bufferedStrategy.getDrawGraphics();
 		
 		g.clearRect(0, 0, GameFrame.WIDTH, GameFrame.HEIGHT);
 	}
@@ -75,8 +76,7 @@ public abstract class State  implements Runnable {
 			update();
 			render();
 		}
-		stop();
-		
+		System.out.println("Stopped");	
 	}
 
 	

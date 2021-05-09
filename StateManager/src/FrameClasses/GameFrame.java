@@ -7,8 +7,6 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
-import States.MenuBackground;
-
 public class GameFrame extends JFrame{
 	
 	

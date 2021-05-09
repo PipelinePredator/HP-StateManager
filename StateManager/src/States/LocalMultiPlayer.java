@@ -8,13 +8,14 @@ import client.TowerWarsGrid;
 
 
 public class LocalMultiPlayer extends State {
-	TowerWarsGrid gameGrid;
+	LocalMultiPlayer localMultiPlayer;
 	GameFrame gameFrame;
+	TowerWarsGrid gameGrid1;
+	TowerWarsGrid gameGrid2;
 
 	
 	public LocalMultiPlayer(GameFrame gameFrame) {
 		super("GameState", gameFrame);
-		this.gameGrid = gameGrid;
 		this.gameFrame = gameFrame;
 //		gameFrame.getContentPane().add(gameGrid);
 //		gameGrid.startGame();
@@ -27,18 +28,18 @@ public class LocalMultiPlayer extends State {
 	public void initialize()
 	{
 		gameFrame.getContentPane().removeAll();
-		gameFrame.getContentPane().add(gameGrid);
+		gameGrid1 = new TowerWarsGrid(1,2,true);
+		gameGrid2 = new TowerWarsGrid(1,2,false);
 		gameFrame.repaint();
-		gameGrid.show();
 		System.out.println("ContenPane added");
-		gameGrid.doRun();
+
 	}
 	
 	public void finalize()
 	{
-		gameFrame.getContentPane().remove(gameGrid);
-		gameGrid.doPause();
-		gameGrid = null;
+//		gameFrame.getContentPane().remove(gameGrid);
+//		gameGrid.doPause();
+//		gameGrid = null;
 	}
 	@Override
 	public void render()

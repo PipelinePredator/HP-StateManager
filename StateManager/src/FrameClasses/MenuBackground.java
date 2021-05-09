@@ -1,4 +1,4 @@
-package States;
+package FrameClasses;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 public class MenuBackground {
 
 	public static  BufferedImage[] allImages = new BufferedImage[899];
-	int currentImage = 0;
+	public int currentImage = 0;
 
 	public int getCurrentImage() {
 		return currentImage;

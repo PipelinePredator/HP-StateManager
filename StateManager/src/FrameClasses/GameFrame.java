@@ -1,24 +1,13 @@
 package FrameClasses;
 
 import java.awt.Canvas;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.event.MouseEvent;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 
 import States.MenuBackground;
-
-import java.awt.Canvas;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-
-import javax.swing.JFrame;
 
 public class GameFrame extends JFrame{
 	
@@ -30,7 +19,7 @@ public class GameFrame extends JFrame{
 	public StateManager stateManager;
 	
 	public static MenuBackground menuBackground;
-
+	public Container container1;
 	private MouseManager mouseManager;
 	
 	public GameFrame()
@@ -40,7 +29,6 @@ public class GameFrame extends JFrame{
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-		
 		canvas = new Canvas();
 		
 		canvas.setPreferredSize(size);
@@ -48,6 +36,8 @@ public class GameFrame extends JFrame{
 		setMaximumSize(size);
 		add(canvas);
 		canvas.createBufferStrategy(3);
+		container1 = getContentPane();
+		container1.add(canvas);
 		pack();
 
 		
@@ -62,7 +52,7 @@ public class GameFrame extends JFrame{
 		canvas.addMouseListener(mouseManager);
 		canvas.addMouseMotionListener(mouseManager);
 		stateManager = new StateManager(this);
-		stateManager.setCurrentState("GameState");
+		stateManager.setCurrentState("MainMenu");
 		stateManager.startCurrentState();
 		
 	}

@@ -27,7 +27,8 @@ public class GameState extends State {
 	public void initialize()
 	{
 		
-		gameFrame.getContentPane().add(gameGrid, BorderLayout.CENTER);
+		gameFrame.container1.add(gameGrid);
+		gameGrid.show();
 		System.out.println("ContenPane added");
 		gameGrid.doRun();
 	}

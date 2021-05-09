@@ -37,7 +37,7 @@ public class MainMenu extends MenuState {
 	
 	
 	public MainMenu(GameFrame gameFrame) {
-		super("MenuState", gameFrame);
+		super("MainMenu", gameFrame);
 		this.gameFrame = gameFrame;
 		this.bufferedStrategy = super.bufferedStrategy;
 

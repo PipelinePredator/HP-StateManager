@@ -26,13 +26,13 @@ public abstract class State  implements Runnable {
 	
 	public synchronized void start()
 	{
-		
+		bufferedStrategy = gameFrame.getCanvas().getBufferStrategy();
 		if(running) {
 			System.out.println("thread already running");
 			return;
 		}
 		
-		running =true;
+		running = true;
 		thread = new Thread(this);
 		thread.start();
 		System.out.println("started " + stateName);
@@ -43,13 +43,14 @@ public abstract class State  implements Runnable {
 		{
 			return;
 		}
+		running = false;
 		try {
 			thread.join(100);//makes the thread die but not imediately
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		running = false;
+
 		System.out.println("stopped" +stateName);
 	}
 

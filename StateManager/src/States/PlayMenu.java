@@ -36,8 +36,8 @@ public class PlayMenu extends MenuState {
 	@Override
 	public void render()
 	{
-//		if(running)
-//		{
+		if(running)
+		{
 			super.render();
 			g.setFont(headFont);
 			g.setColor(Color.white);
@@ -57,39 +57,43 @@ public class PlayMenu extends MenuState {
 			}
 			g.dispose();
 			bufferedStrategy.show();
-//		}
+		}
 		
 		
 	}
 	@Override
 	public void update() {
 		
-//		if(running)
-//		{
+		if(running)
+		{
 			super.update();
 			if(localMulitPlayer.isButtonPressed())
 			{
 				gameFrame.stateManager.stopCurrentState();
 				gameFrame.stateManager.setCurrentState("LocalMultiPlayer");
+				gameFrame.stateManager.startCurrentState();
 			}
 			else if(createOnlineMultiPlayer.isButtonPressed())
 			{
 				gameFrame.stateManager.stopCurrentState();
 				gameFrame.stateManager.setCurrentState("CreateOnlineMultiPlayer");
+				gameFrame.stateManager.startCurrentState();
 			}
 			else if(joinOnlineMultiPlayer.isButtonPressed())
 			{
 				gameFrame.stateManager.stopCurrentState();
 				gameFrame.stateManager.setCurrentState("JoinOnlineMultiPlayer");
+				gameFrame.stateManager.startCurrentState();
 			}
 			else if(backButton.isButtonPressed())
 			{
 				gameFrame.stateManager.stopCurrentState();
 				gameFrame.stateManager.setCurrentState("MainMenu");
+				gameFrame.stateManager.startCurrentState();
 				
 			}
 		
-//		}
+		}
 	}
 
 }

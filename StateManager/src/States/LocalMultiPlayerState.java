@@ -17,14 +17,8 @@ public class LocalMultiPlayerState extends State {
 
 	
 	public LocalMultiPlayerState(GameFrame gameFrame) {
-		super("LocalMulitPlayer", gameFrame);
+		super("LocalMultiPlayer", gameFrame);
 		this.gameFrame = gameFrame;
-//		gameFrame.getContentPane().add(gameGrid);
-//		gameGrid.startGame();
-
-//		gameFrame.getContentPane().remove(gameGrid); 
-		
-		// to remove. getContentPane().remove(); oder removeAll();
 
 	}
 	public void initialize()
@@ -49,7 +43,16 @@ public class LocalMultiPlayerState extends State {
 		gameGrid2 = null;
 		gameFrame.getContentPane().add(gameFrame.getCanvas());//see if not needed
 	}
-	
+	@Override
+	public void render()
+	{
+		//should do nothing or else this will result in errors
+	}
+	@Override
+	public void update()
+	{
+		
+	}
 	@Override
 	public void start()
 	{

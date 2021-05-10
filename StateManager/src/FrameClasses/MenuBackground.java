@@ -24,7 +24,7 @@ public class MenuBackground {
 		
 			for(int i = 0;i < allImages.length ; i++ )
 			{
-			String s  = "res\\Background\\Frame-"+(i+1)+".jpg";
+			String s  = "res\\background\\Frame-"+(i+1)+".jpg";
 			System.out.println(s);
 				try {
 					allImages[i] = ImageIO.read(new File(s));

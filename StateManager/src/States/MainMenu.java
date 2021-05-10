@@ -56,35 +56,39 @@ public class MainMenu extends MenuState {
 	@Override
 	public void render()
 	{
-		super.render();
-		g = super.g;
-		//draw Title
-		g.setFont(titleFont);
-		g.setColor(Color.WHITE);
-		g.drawString("TowerWars", titleXPos, titleYPos);
-		//Draw all Buttons to their according states
-		for(MenuButton button: super.allButtons)
+		if(running)
 		{
-			if(button.isHighlited())
+			super.render();
+			g = super.g;
+			//draw Title
+			g.setFont(titleFont);
+			g.setColor(Color.WHITE);
+			g.drawString("TowerWars", titleXPos, titleYPos);
+			//Draw all Buttons to their according states
+			for(MenuButton button: super.allButtons)
 			{
-				g.drawImage(button.buttons[1], button.getXPosition(), button.getYPosition(),null);
-			}else 
-			{
-				g.drawImage(button.buttons[0], button.getXPosition(), button.getYPosition(),null);
+				if(button.isHighlited())
+				{
+					g.drawImage(button.buttons[1], button.getXPosition(), button.getYPosition(),null);
+				}else 
+				{
+					g.drawImage(button.buttons[0], button.getXPosition(), button.getYPosition(),null);
+				}
 			}
+			
+			g.dispose();
+			bufferedStrategy.show();
+			// end the drawing
 		}
 		
-		g.dispose();
-		bufferedStrategy.show();
-		// end the drawing
 		
 	
 	}
 	@Override
 	public void update()
 	{
-//		if(running)
-//		{
+		if(running)
+		{
 			super.update();
 	
 	
@@ -92,22 +96,19 @@ public class MainMenu extends MenuState {
 			{	
 				gameFrame.stateManager.stopCurrentState();
 				gameFrame.stateManager.setCurrentState("PlayMenu");
+				gameFrame.stateManager.startCurrentState();
 			}
 			if(exitButton.isButtonPressed())
 			{
 				System.exit(0);
 			}
-//		}
+		}
 		
 
 		
 		
 	}
-	@Override
-	public void start()
-	{
-		super.start();
-	}
+	
 	
 
 	

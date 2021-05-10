@@ -7,9 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
-import States.LocalMultiPlayerState;
-import States.MainMenu;
-import States.PlayMenu;
+import States.*;
 import client.TowerWarsGrid;
 
 public class StateManager {
@@ -22,10 +20,12 @@ public class StateManager {
 	private State latestState;
 	
 	private State localMultiPlayer;
-	private State JoinOnlineMultiPlayer;
-	private State CreateOnlineMultiPlayer;
+	private State joinOnlineMultiPlayer;
+	private State createOnlineMultiPlayer;
 	private State mainMenu;
 	private State playMenu;
+	private State victoryScreen;
+	private State loosingScreen;
 	
 	
 	public StateManager(GameFrame jFrame)
@@ -40,15 +40,19 @@ public class StateManager {
 		localMultiPlayer = new LocalMultiPlayerState(gameFrame);
 		mainMenu = new MainMenu(gameFrame);
 		playMenu = new PlayMenu(gameFrame);
-		JoinOnlineMultiPlayer = new States.JoinOnlineMultiPlayer(gameFrame);
-		CreateOnlineMultiPlayer = new States.CreateOnlineMultiPlayer(gameFrame);
+		joinOnlineMultiPlayer = new JoinOnlineMultiPlayer(gameFrame);
+		createOnlineMultiPlayer = new CreateOnlineMultiPlayer(gameFrame);
+		victoryScreen = new VictoryScreen(gameFrame);
+		loosingScreen = new LoosingScreen(gameFrame);
+		
 		
 		allStates.add(localMultiPlayer);
 		allStates.add(mainMenu);
 		allStates.add(playMenu);
-		allStates.add(CreateOnlineMultiPlayer);
-		allStates.add(JoinOnlineMultiPlayer);
-		
+		allStates.add(createOnlineMultiPlayer);
+		allStates.add(joinOnlineMultiPlayer);
+		allStates.add(loosingScreen);
+		allStates.add(victoryScreen);
 	}
 	
 	public void setCurrentState(String stateName) 
@@ -58,9 +62,10 @@ public class StateManager {
 			if(state.getStateName() == stateName)
 			{
 				currentState = state;
+				return;
 			}
 		}
-		startCurrentState();
+//		startCurrentState();
 	}
 	
 	public void startCurrentState() 

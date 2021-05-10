@@ -37,6 +37,7 @@ public class MenuState  extends State{
 	@Override
 	public void update()
 	{
+		
 		super.update();
 		this.mouseX = super.getMouseX();
 		this.mouseY = super.getMouseY();
@@ -63,8 +64,8 @@ public class MenuState  extends State{
 	@Override
 	public void render()
 	{
-		if(running)
-		{
+//		if(running)
+//		{
 			super.render();
 		
 			this.g = super.g;
@@ -72,7 +73,7 @@ public class MenuState  extends State{
 			//Draws the Background for all MenuStates 
 			g.drawImage(GameFrame.menuBackground.allImages[GameFrame.menuBackground.currentImage], 0, 0, null);
 			//draws the title for allStates
-		}
+//		}
 		
 		
 		

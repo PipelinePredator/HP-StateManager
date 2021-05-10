@@ -63,9 +63,17 @@ public class MenuButton {
 	public boolean isButtonPressed() {
 		if(xPosition<=mouseManager.getMouseX()&& mouseManager.getMouseX()<=(xPosition+width) && yPosition<=mouseManager.getMouseY()&& mouseManager.getMouseY() <=(yPosition+height)&&mouseManager.isLeftPressed())
 		{
-			return true;
-		}else {
-			return false;
+			//the system is stopped aslong as leftPressed is true so multiple Buttons over each other are pressed
+			try {
+				TimeUnit.MILLISECONDS.sleep(5);
+				System.out.println("napped");
+			} catch (InterruptedException e) {
+				System.out.println("nonap");
+				e.printStackTrace();
+			}
+				return true;
+			}else {
+				return false;
 		}
 	}
 

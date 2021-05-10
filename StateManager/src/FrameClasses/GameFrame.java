@@ -24,7 +24,7 @@ public class GameFrame extends JFrame{
 	{
 		setSize(WIDTH, HEIGHT);
 		setVisible(true);
-		setResizable(true);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		
@@ -35,7 +35,7 @@ public class GameFrame extends JFrame{
 		setMinimumSize(size);
 		setMaximumSize(size);
 		container1.add(canvas);
-		add(canvas);
+//		add(canvas);
 		canvas.createBufferStrategy(3);
 		pack();
 
@@ -51,8 +51,8 @@ public class GameFrame extends JFrame{
 		canvas.addMouseListener(mouseManager);
 		canvas.addMouseMotionListener(mouseManager);
 		stateManager = new StateManager(this);
-		stateManager.setCurrentState("PlayMenu");
-//		stateManager.startCurrentState();
+		stateManager.setCurrentState("LoosingScreen");
+		stateManager.startCurrentState();
 		
 	}
 
@@ -61,6 +61,17 @@ public class GameFrame extends JFrame{
 	public void paint(Graphics g)
 	{
 		
+		
+	}
+	public void initialiseANewCanvas()
+	{
+		canvas = new Canvas();
+		container1 = getContentPane();
+		canvas.setPreferredSize(size);
+		setMinimumSize(size);
+		setMaximumSize(size);
+		container1.add(canvas);
+		canvas.createBufferStrategy(3);
 	}
 	public Canvas getCanvas()
 	{
